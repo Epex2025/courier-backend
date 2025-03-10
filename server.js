@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const roleRoutes = require("./routes/roleRoutes");
 const branchRoutes = require("./routes/branches.routes"); // ✅ Added Branch Management Route
 
+
 const app = express();
 
 // ✅ Connect to MongoDB
@@ -14,6 +15,9 @@ connectDB();
 app.use(cors()); // Enable CORS
 app.use(express.json()); // Parses JSON requests
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded data
+app.get("/", (req, res) => {
+  res.send("Server is running 🚀");
+});
 
 // ✅ Test Route
 app.get("/api/test", (req, res) => {
